@@ -18,7 +18,7 @@ export default function Details({route}: {route: any}) {
 
   const {data, isLoading} = useQuery('infoPokemon', fetcher);
 
-  const [imageFront, imageBack] = useState(1);
+  const [goodImage, setGoodImage] = useState(1);
 
   if (isLoading) return null;
 
@@ -29,10 +29,28 @@ export default function Details({route}: {route: any}) {
           <Text style={styles.texte}>{data.name}</Text>
         </View>
         <View style={styles.box}>
-          <Image style={styles.image} source={{uri: imageUrl}} />
+          <Image
+            style={styles.image}
+            source={{
+              uri: goodImage
+                ? data.sprites.front_default
+                : data.sprites.back_default,
+            }}
+          />
+          {/* <Image style={styles.image} source={{uri: 
+          if(goodImage == 0){
+            goodImage = data.sprites.front_default;
+          }
+          else{
+            goodImage = data.sprites.back_default;
+          }
+          }} /> */}
         </View>
         <View style={styles.box}>
-          <Pressable onPress={() => }>
+          <Pressable
+            onPress={() =>
+              goodImage === 1 ? setGoodImage(0) : setGoodImage(1)
+            }>
             <Ionicons name="reload-circle" size={60} color="red" />
           </Pressable>
         </View>

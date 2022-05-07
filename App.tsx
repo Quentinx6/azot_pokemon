@@ -11,10 +11,6 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    // <View>
-    //   <Text>Bienvenue sur le pokedex de Quentin !</Text>
-    //   <StatusBar style="auto" />
-    // </View>
     <>
       <QueryClientProvider client={queryClient}>
         <NavigationContainer>
