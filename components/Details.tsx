@@ -1,4 +1,3 @@
-// import * as React from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,12 +12,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import React, {useState} from 'react';
 
 export default function Details({route}: {route: any}) {
+  //json recovery
   const fetcher = () =>
     fetch(route.params.names).then(response => response.json());
 
   const {data, isLoading} = useQuery('infoPokemon', fetcher);
 
-  const [goodImage, setGoodImage] = useState(1);
+  //Create a useState for result boolean
+  const [goodImage, setGoodImage] = useState(true);
 
   if (isLoading) return null;
 
@@ -37,19 +38,11 @@ export default function Details({route}: {route: any}) {
                 : data.sprites.back_default,
             }}
           />
-          {/* <Image style={styles.image} source={{uri: 
-          if(goodImage == 0){
-            goodImage = data.sprites.front_default;
-          }
-          else{
-            goodImage = data.sprites.back_default;
-          }
-          }} /> */}
         </View>
         <View style={styles.box}>
           <Pressable
             onPress={() =>
-              goodImage === 1 ? setGoodImage(0) : setGoodImage(1)
+              goodImage === true ? setGoodImage(false) : setGoodImage(true)
             }>
             <Ionicons name="reload-circle" size={60} color="red" />
           </Pressable>

@@ -1,5 +1,3 @@
-// import { StatusBar } from 'expo-status-bar';
-import {StyleSheet, Text, View} from 'react-native';
 import Liste from './components/Liste';
 import Details from './components/Details';
 import {NavigationContainer} from '@react-navigation/native';
